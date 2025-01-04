@@ -7,7 +7,7 @@ class Treasure:
     Class to implement a treasure
     '''
     
-    def __init__(self, id, size, arrival_time):
+    def __init__(self, id,size,  arrival_time):
         '''
         Arguments:
             id : int : The id of the treasure (unique positive integer for each treasure)
@@ -18,11 +18,19 @@ class Treasure:
         Description:
             Initializes the treasure
         '''
-        
         # DO NOT EDIT THE __init__ method
         self.id = id
         self.size = size
         self.arrival_time = arrival_time
         self.completion_time = None
-    
     # You can add more methods if required
+
+    def processed_time(self,k):
+        if k==None:
+            self.pt=0
+        else:
+            self.pt+=k
+    def ob_size(self):
+        return self.size-self.pt
+    def priority(self):
+        return self.arrival_time+self.ob_size()
